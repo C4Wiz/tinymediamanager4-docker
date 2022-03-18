@@ -1,16 +1,14 @@
 #
 # TinyMediaManager Dockerfile
 #
-FROM jlesage/baseimage-gui:alpine-3.15-glibc
+FROM jlesage/baseimage-gui:alpine-3.12-glibc
 
 # Define software versions.
-ARG TMM_VERSION=4.2.7
+ARG TMM_VERSION=4.2.5.1
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
-ENV LD_PRELOAD=/lib/libgcompat.so.0
-
 # Define working directory.
 WORKDIR /tmp
 
@@ -21,24 +19,19 @@ RUN \
 
 # Install dependencies.
 RUN \
-    apk --update add \
+    apk add --update \
         libmediainfo \
         ttf-dejavu \
         bash \
-	zenity \
+	      zenity \
         tar \
-	xz \
-	zstd \
-	gcompat \
-	ca-certificates \
-	wget \
-	openssl && \
-        update-ca-certificates
+      	zstd
+
 
 # Fix Java Segmentation Fault
 RUN wget "https://www.archlinux.org/packages/core/x86_64/zlib/download" -O /tmp/libz.tar.xz \
     && mkdir -p /tmp/libz \
-    && tar --use-compress-program=/usr/bin/unzstd -xf /tmp/libz.tar.xz -C /tmp/libz \
+    && tar -xf /tmp/libz.tar.xz -C /tmp/libz \
     && cp /tmp/libz/usr/lib/libz.so.1.2.11 /usr/glibc-compat/lib \
     && /usr/glibc-compat/sbin/ldconfig \
     && rm -rf /tmp/libz /tmp/libz.tar.xz
@@ -50,7 +43,7 @@ RUN wget "https://www.archlinux.org/packages/core/x86_64/zlib/download" -O /tmp/
 #        /etc/xdg/openbox/rc.xml
 
 # Generate and install favicons.
-RUN unset LD_PRELOAD && \
+RUN \
     APP_ICON_URL=https://gitlab.com/tinyMediaManager/tinyMediaManager/raw/45f9c702615a55725a508523b0524166b188ff75/AppBundler/tmm.png && \
     install_app_icon.sh "$APP_ICON_URL"
 
@@ -71,5 +64,5 @@ LABEL \
       org.label-schema.name="tinymediamanager" \
       org.label-schema.description="Docker container for TinyMediaManager" \
       org.label-schema.version="unknown" \
-      org.label-schema.vcs-url="https://github.com/romancin/tmm-docker" \
+      #org.label-schema.vcs-url="https://github.com/romancin/tmm-docker" \
       org.label-schema.schema-version="1.0"
