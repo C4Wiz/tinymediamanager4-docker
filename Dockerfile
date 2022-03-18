@@ -1,10 +1,10 @@
 #
 # TinyMediaManager Dockerfile
 #
-FROM jlesage/baseimage-gui:alpine-3.12-glibc
+FROM jlesage/baseimage-gui:alpine-3.15-glibc
 
 # Define software versions.
-ARG TMM_VERSION=4.2.5.1
+ARG TMM_VERSION=4.2.7
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
@@ -64,5 +64,5 @@ LABEL \
       org.label-schema.name="tinymediamanager" \
       org.label-schema.description="Docker container for TinyMediaManager" \
       org.label-schema.version="unknown" \
-      org.label-schema.vcs-url="https://github.com/romancin/tmm-docker" \
+      #org.label-schema.vcs-url="https://github.com/romancin/tmm-docker" \
       org.label-schema.schema-version="1.0"
