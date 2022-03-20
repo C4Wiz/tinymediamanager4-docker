@@ -4,6 +4,8 @@
 FROM jlesage/baseimage-gui:debian-11
 
 # Change locale
+ENV LANGUAGE=n_US.UTF-8
+ENV LC_ALL=n_US.UTF-8
 ENV LANG=en_US.UTF-8
 #RUN locale-gen en_US.UTF-8
 
@@ -23,9 +25,7 @@ RUN \
     apt-utils \
     libmediainfo0v5 \
     fonts-dejavu \
-    bash \
-    zenity \ 
-    tar \
+    zenity \
     wget
 
 # Download TinyMediaManager
