@@ -23,6 +23,7 @@ RUN \
     apt update && \ 
     apt install -y  \
     apt-utils \
+    locales \
     libmediainfo0v5 \
     fonts-dejavu \
     zenity \
