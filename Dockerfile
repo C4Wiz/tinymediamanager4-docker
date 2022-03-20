@@ -14,11 +14,6 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/b
 # Define working directory.
 WORKDIR /tmp
 
-# Download TinyMediaManager
-RUN \
-    mkdir -p /defaults && \
-    wget ${TMM_URL} -O /defaults/tmm.tar.gz
-
 # Install dependencies.
 RUN \
     apk add --update \
@@ -29,6 +24,11 @@ RUN \
         tar \
 	curl \
       	zstd
+
+# Download TinyMediaManager
+RUN \
+    mkdir -p /defaults && \
+    wget ${TMM_URL} -O /defaults/tmm.tar.gz
 
 #
 # ffmpeg
