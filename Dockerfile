@@ -16,14 +16,14 @@ WORKDIR /tmp
 
 # Install dependencies.
 RUN \
-    apk add --update \
-        libmediainfo \
-        ttf-dejavu \
-        bash \
-	zenity \
-        tar \
-	curl \
-      	zstd
+    apt-get install -y --no-install-recommends \
+    curl \
+    libmediainfo \
+    ttf-dejavu \
+    bash \
+    zenity \
+    tar \
+    zstd
 
 # Download TinyMediaManager
 RUN \
