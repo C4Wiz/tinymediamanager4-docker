@@ -17,7 +17,7 @@ WORKDIR /tmp
 # Install dependencies.
 RUN \
     apk add --update \
-        libmediainfo=21.09 \
+        libmediainfo \
         ttf-dejavu \
         bash \
 	    zenity \
