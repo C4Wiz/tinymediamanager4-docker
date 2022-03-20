@@ -1,7 +1,7 @@
 #
 # TinyMediaManager Dockerfile
 #
-FROM jlesage/baseimage-gui:alpine-3.12-glibc
+FROM jlesage/baseimage-gui:alpine-3.15-glibc
 
 # Define software versions.
 ARG TMM_VERSION=4.2.7
@@ -17,7 +17,7 @@ WORKDIR /tmp
 # Install dependencies.
 RUN \
     apk add --update \
-        #libmediainfo \
+        libmediainfo \
         ttf-dejavu \
         bash \
 	    zenity \
