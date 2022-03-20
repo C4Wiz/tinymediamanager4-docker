@@ -1,41 +1,36 @@
 #
 # TinyMediaManager Dockerfile
 #
-FROM jlesage/baseimage-gui:alpine-3.15
+FROM jlesage/baseimage-gui:debian-11
+
+# Change locale
+ENV LANG=en_US.UTF-8
+#RUN locale-gen en_US.UTF-8
 
 # Define software versions.
-ARG TMM_VERSION=4.2.7
-#ARG FFMPEG_VERSION=4.3.2
+ARG TMM_VERSION=4.2.5.1
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
-#ARG FFMPEG_URL=https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
 # Define working directory.
 WORKDIR /tmp
 
 # Install dependencies.
 RUN \
-    apk add --update \
-        libmediainfo \
-        ttf-dejavu \
-        bash \
-	    zenity \
-        tar \
-      	zstd
+    apt update && \ 
+    apt install -y  \
+	libmediainfo0v5 \
+    fonts-dejavu \
+    bash \
+	zenity \ 
+    tar \
+    wget
 
 # Download TinyMediaManager
 RUN \
     mkdir -p /defaults && \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
-
-# Fix Java Segmentation Fault
-RUN wget "https://www.archlinux.org/packages/core/x86_64/zlib/download" -O /tmp/libz.tar.xz \
-    && mkdir -p /tmp/libz \
-    && tar -xf /tmp/libz.tar.xz -C /tmp/libz \
-    && cp /tmp/libz/usr/lib/libz.so.1.2.11 /usr/glibc-compat/lib \
-    && /usr/glibc-compat/sbin/ldconfig \
-    && rm -rf /tmp/libz /tmp/libz.tar.xz
 
 # Maximize only the main/initial window.
 # It seems this is not needed for TMM 3.X version.
