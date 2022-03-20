@@ -8,7 +8,7 @@ ENV LANG=en_US.UTF-8
 #RUN locale-gen en_US.UTF-8
 
 # Define software versions.
-ARG TMM_VERSION=4.2.5.1
+ARG TMM_VERSION=4.2.7
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
@@ -20,10 +20,11 @@ WORKDIR /tmp
 RUN \
     apt update && \ 
     apt install -y  \
-	libmediainfo0v5 \
+    apt-utils \
+    libmediainfo0v5 \
     fonts-dejavu \
     bash \
-	zenity \ 
+    zenity \ 
     tar \
     wget
 
