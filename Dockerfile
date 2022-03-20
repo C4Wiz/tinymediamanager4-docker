@@ -34,9 +34,9 @@ RUN \
 #
 RUN \
     mkdir /tmp/ffmpeg
-    log "Downloading ffmpeg..."
+    #log "Downloading ffmpeg..."
     curl -# -L ${FFMPEG_URL} | tar -xJ --strip 1 -C /tmp/ffmpeg
-    log "Configuring ffmpeg..."
+    #log "Configuring ffmpeg..."
     (
     cd /tmp/ffmpeg && ./configure \
         --prefix=/usr \
@@ -48,9 +48,9 @@ RUN \
         --disable-doc \
         --disable-programs \
     )
-    log "Compiling ffmpeg..."
+    #log "Compiling ffmpeg..."
     make -C /tmp/ffmpeg -j$(nproc)
-    log "Installing ffmpeg..."
+    #log "Installing ffmpeg..."
     make -C /tmp/ffmpeg install
 
 
