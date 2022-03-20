@@ -4,10 +4,10 @@
 FROM jlesage/baseimage-gui:debian-11
 
 # Change locale
-ENV LANGUAGE=n_US.UTF-8
-ENV LC_ALL=n_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
-#RUN locale-gen en_US.UTF-8
+RUN locale-gen en_US.UTF-8
 
 # Define software versions.
 ARG TMM_VERSION=4.2.7
