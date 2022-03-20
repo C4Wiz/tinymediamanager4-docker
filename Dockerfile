@@ -5,11 +5,11 @@ FROM jlesage/baseimage-gui:alpine-3.12-glibc
 
 # Define software versions.
 ARG TMM_VERSION=4.2.7
-ARG FFMPEG_VERSION=4.3.2
+#ARG FFMPEG_VERSION=4.3.2
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
-ARG FFMPEG_URL=https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
+#ARG FFMPEG_URL=https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
 # Define working directory.
 WORKDIR /tmp
@@ -17,7 +17,6 @@ WORKDIR /tmp
 # Install dependencies.
 RUN \
     apt-get install -y --no-install-recommends \
-    curl \
     libmediainfo \
     ttf-dejavu \
     bash \
@@ -29,31 +28,6 @@ RUN \
 RUN \
     mkdir -p /defaults && \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
-
-#
-# ffmpeg
-#
-RUN \
-    mkdir /tmp/ffmpeg
-    #log "Downloading ffmpeg..."
-    curl -# -L ${FFMPEG_URL} | tar -xJ --strip 1 -C /tmp/ffmpeg
-    #log "Configuring ffmpeg..."
-    (
-    cd /tmp/ffmpeg && ./configure \
-        --prefix=/usr \
-        --enable-static \
-        --disable-shared \
-        --enable-pic \
-        --enable-libfdk-aac \
-        --disable-x86asm \
-        --disable-doc \
-        --disable-programs \
-    )
-    #log "Compiling ffmpeg..."
-    make -C /tmp/ffmpeg -j$(nproc)
-    #log "Installing ffmpeg..."
-    make -C /tmp/ffmpeg install
-
 
 # Fix Java Segmentation Fault
 RUN wget "https://www.archlinux.org/packages/core/x86_64/zlib/download" -O /tmp/libz.tar.xz \
