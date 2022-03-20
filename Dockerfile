@@ -25,8 +25,9 @@ RUN \
         libmediainfo \
         ttf-dejavu \
         bash \
-	      zenity \
+	zenity \
         tar \
+	curl \
       	zstd
 
 #
