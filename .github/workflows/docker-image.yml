@@ -5,9 +5,9 @@ name: "Build TMMv4 and Publish"
 # separate terms of service, privacy policy, and support
 # documentation..
 
-on:
-  schedule:
-    - cron: '0 12 * * 1'
+#on:
+  #schedule:
+    #- cron: '0 12 * * 1'
   push:
     branches: [ main ]
     tags: [ 'v*.*.*' ]
