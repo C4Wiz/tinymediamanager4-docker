@@ -5,7 +5,7 @@ This is a completely funcional Docker image with TinyMediaManager.
 
 Based on Debian 11. 
 
-Tested and working on Synology and QNAP, but should work on any x86_64 devices.
+Tested and working on unRAID 6.10.0rc4, but should work on any x86_64 devices.
 
 Thanks to @jlesage for a great base image for GUI apps.
 
@@ -28,14 +28,6 @@ romancin/tinymediamanager:v4-latest
 ```
 
 Browse to `http://your-host-ip:5800` to access the TinyMediaManager GUI.
-
-### Image TAGs available
-
-| TAG       | Description                                  |
-|-----------|----------------------------------------------|
-|`latest`| Latest available version of **TMM v3** |
-|`latest-v4`| Latest available version of **TMM v4** |
-|`vX.X.X` | Points directly to one of the TMM versions available, v3 or v4 |
 
 ### Environment Variables
 
