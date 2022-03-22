@@ -3,7 +3,7 @@
 A repository for creating a docker container including TinyMediaManager with GUI interface.
 This is a completely funcional Docker image with TinyMediaManager.
 
-Based on Alpine Linux, which provides a very small size. 
+Based on Debian 11. 
 
 Tested and working on Synology and QNAP, but should work on any x86_64 devices.
 
@@ -274,8 +274,3 @@ server {
 ```
 
 [TimeZone]: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
-## Support or Contact
-
-Having troubles with the container or have questions?  Please
-[create a new issue].
