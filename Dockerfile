@@ -17,7 +17,7 @@ RUN \
     apt update && \ 
     apt install -y  \
     apt-utils \
-    sudo \
+    ffmpeg \
     locales \
     libmediainfo0v5 \
     fonts-dejavu \
