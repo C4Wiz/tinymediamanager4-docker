@@ -4,7 +4,7 @@
 FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
-ARG TMM_VERSION=4.2.8
+ARG TMM_VERSION=4.2.9
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
@@ -19,7 +19,8 @@ RUN \
     apt-utils \
     ffmpeg \
     locales \
-    libmediainfo0v5 \
+    libzen0 \
+    libmediainfo0 \
     fonts-dejavu \
     zenity \
     wget
