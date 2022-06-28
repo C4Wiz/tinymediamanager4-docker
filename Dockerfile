@@ -19,8 +19,8 @@ RUN \
     apt-utils \
     ffmpeg \
     locales \
-    libzen0 \
-    libmediainfo0 \
+    libzen0v5 \
+    libmediainfo0v5 \
     fonts-dejavu \
     zenity \
     wget
