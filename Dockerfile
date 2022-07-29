@@ -21,7 +21,6 @@ WORKDIR /tmp
 # Install dependencies.
 RUN \
     apt update && \
-    apt upgrade && \
     apt install -y  \
     apt-utils \
     ffmpeg \
@@ -82,7 +81,8 @@ RUN \
     
 # Cleanup
 RUN \
-    apt autoremove -y
+    apt upgrade && \
+    autoremove -y
 
 # Add files.
 COPY rootfs/ /
