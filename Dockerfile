@@ -23,7 +23,7 @@ RUN \
     apt update && \
     apt install -y  \
     apt-utils \
-    ffmpeg \
+    #ffmpeg \
     locales \
     #libmediainfo0v5 \
     fonts-dejavu \
