@@ -57,7 +57,7 @@ RUN \
 # Download LibMediaInfo   
 RUN \
     wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb && \
-    dpkg -i tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
+    dpkg -i /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
 # Cleanup
 RUN \
     rm -r \tmp\
