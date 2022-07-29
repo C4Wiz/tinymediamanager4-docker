@@ -5,9 +5,13 @@ FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
 ARG TMM_VERSION=4.2.8
+ARG FFMPEG_VERSION=5.0.1-3+b1
+ARG LIBMEDIAINFO_VERSION=22.06+dfsg-1
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
+ARG FFMPEG_URL=https://deb.debian.org/debian/pool/main/f/ffmpeg/ffmpeg_${FFMPEG_VERSION}_amd64.deb
+ARG LIBMEDIAINFO_URL=http://ftp.us.debian.org/debian/pool/main/libm/libmediainfo/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
 # Define working directory.
 WORKDIR /tmp
@@ -17,9 +21,9 @@ RUN \
     apt update && \ 
     apt install -y  \
     apt-utils \
-    ffmpeg \
+    #ffmpeg \
     locales \
-    libmediainfo0v5 \
+    #libmediainfo0v5 \
     fonts-dejavu \
     zenity \
     wget
@@ -35,6 +39,18 @@ RUN locale-gen en_US.UTF-8
 RUN \
     mkdir -p /defaults && \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
+# Download FFMPEG    
+RUN \
+    wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
+    dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
+# Download LibMediaInfo   
+RUN \
+    wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
+    dpkg -i tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
+# Cleanup
+RUN \
+    rm -r \tmp\
+    
 
 # Maximize only the main/initial window.
 # It seems this is not needed for TMM 3.X version.
