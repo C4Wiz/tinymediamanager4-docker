@@ -21,7 +21,7 @@ WORKDIR /tmp
 # Install dependencies.
 RUN \
     apt update && \
-    apt upgrade \
+    apt upgrade && \
     apt install -y  \
     apt-utils \
     ffmpeg \
