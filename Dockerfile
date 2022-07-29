@@ -26,6 +26,7 @@ RUN \
     #libmediainfo0v5 \
     fonts-dejavu \
     zenity \
+    dpkg \
     wget
     
 # Change locale
