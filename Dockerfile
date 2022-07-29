@@ -29,7 +29,7 @@ RUN \
     fonts-dejavu \
     zenity \
     #dpkg \
-    npm \
+    #npm \
     #libavcodec59 \
     #libavdevice59 \
     #libavfilter8 \
