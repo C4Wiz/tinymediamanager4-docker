@@ -40,8 +40,7 @@ RUN \
     libmms0 \
     libtinyxml2-9 \
     libzen0v5 \
-    wget \
-    apt -autoremove
+    wget 
     
 # Change locale
 ENV LANGUAGE=en_US.UTF-8
@@ -79,6 +78,10 @@ RUN \
 RUN \
     APP_ICON_URL=https://gitlab.com/tinyMediaManager/tinyMediaManager/raw/45f9c702615a55725a508523b0524166b188ff75/AppBundler/tmm.png && \
     install_app_icon.sh "$APP_ICON_URL"
+    
+# Cleanup
+RUN \
+    apt autoremove -y
 
 # Add files.
 COPY rootfs/ /
