@@ -36,6 +36,9 @@ RUN \
     libavutil57 \
     libpostproc56 \
     libswresample4 \
+    libmms0 \
+    libtinyxml2-9 \
+    libzen0v5 \
     wget
     
 # Change locale
