@@ -4,7 +4,7 @@
 FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
-ARG TMM_VERSION=4.2.8
+ARG TMM_VERSION=4.3
 ARG FFMPEG_VERSION=5.0.1-3+b1
 ARG LIBMEDIAINFO_VERSION=22.06+dfsg-1
 
