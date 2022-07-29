@@ -42,6 +42,7 @@ RUN \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
 # Download FFMPEG    
 RUN \
+    mkdir -p /tmp && \
     wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
     dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
 # Download LibMediaInfo   
