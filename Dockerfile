@@ -21,12 +21,19 @@ RUN \
     apt update && \ 
     apt install -y  \
     apt-utils \
-    ffmpeg \
+    #ffmpeg \
     locales \
     #libmediainfo0v5 \
     fonts-dejavu \
     zenity \
     dpkg \
+    libavcodec59 \
+    libavdevice59 \
+    libavfilter8 \
+    libavformat59 \
+    libavutil57 \
+    libpostproc56 \
+    libswresample4 \
     wget
     
 # Change locale
@@ -44,8 +51,7 @@ RUN \
 RUN \
     mkdir -p /tmp && \
     wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
-    dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
-    apt-get -f install
+    dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
 # Download LibMediaInfo   
 RUN \
     wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb && \
