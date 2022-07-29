@@ -82,7 +82,7 @@ RUN \
 # Cleanup
 RUN \
     apt upgrade && \
-    autoremove -y
+    apt autoremove -y
 
 # Add files.
 COPY rootfs/ /
