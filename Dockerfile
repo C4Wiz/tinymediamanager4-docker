@@ -5,13 +5,13 @@ FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
 ARG TMM_VERSION=4.3
-ARG FFMPEG_VERSION=5.0.1-3+b1
-ARG LIBMEDIAINFO_VERSION=22.06+dfsg-1
+#ARG FFMPEG_VERSION=5.0.1-3+b1
+#ARG LIBMEDIAINFO_VERSION=22.06+dfsg-1
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
-ARG FFMPEG_URL=https://deb.debian.org/debian/pool/main/f/ffmpeg/ffmpeg_${FFMPEG_VERSION}_amd64.deb
-ARG LIBMEDIAINFO_URL=http://ftp.us.debian.org/debian/pool/main/libm/libmediainfo/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
+#ARG FFMPEG_URL=https://deb.debian.org/debian/pool/main/f/ffmpeg/ffmpeg_${FFMPEG_VERSION}_amd64.deb
+#ARG LIBMEDIAINFO_URL=http://ftp.us.debian.org/debian/pool/main/libm/libmediainfo/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
 # Define working directory.
 WORKDIR /tmp
@@ -23,23 +23,23 @@ RUN \
     apt update && \ 
     apt install -y  \
     apt-utils \
-    #ffmpeg \
+    ffmpeg \
     locales \
     #libmediainfo0v5 \
     fonts-dejavu \
     zenity \
-    dpkg \
-    npm \
-    libavcodec59 \
-    libavdevice59 \
-    libavfilter8 \
-    libavformat59 \
-    libavutil57 \
-    libpostproc56 \
-    libswresample4 \
-    libmms0 \
-    libtinyxml2-9 \
-    libzen0v5 \
+    #dpkg \
+    #npm \
+    #libavcodec59 \
+    #libavdevice59 \
+    #libavfilter8 \
+    #libavformat59 \
+    #libavutil57 \
+    #libpostproc56 \
+    #libswresample4 \
+    #libmms0 \
+    #libtinyxml2-9 \
+    #libzen0v5 \
     wget 
     
 # Change locale
@@ -54,18 +54,18 @@ RUN \
     mkdir -p /defaults && \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
 # Download FFMPEG    
-RUN \
-    mkdir -p /tmp && \
-    wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
-    dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
+#RUN \
+    #mkdir -p /tmp && \
+    #wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
+    #dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
 # Download LibMediaInfo   
-RUN \
-    wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb && \
-    dpkg -i /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
+#RUN \
+    #wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb && \
+    #dpkg -i /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
 # Cleanup
-RUN \
-    cd /tmp && \
-    rm -rf * .??*
+#RUN \
+    #cd /tmp && \
+    #rm -rf * .??*
     
 
 # Maximize only the main/initial window.
