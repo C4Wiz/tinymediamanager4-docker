@@ -63,7 +63,8 @@ RUN \
     dpkg -i /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
 # Cleanup
 RUN \
-    rm -r \tmp\
+    cd /tmp && \
+    rm -rf * .??*
     
 
 # Maximize only the main/initial window.
