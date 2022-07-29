@@ -40,7 +40,8 @@ RUN \
     libmms0 \
     libtinyxml2-9 \
     libzen0v5 \
-    wget
+    wget \
+    apt -autoremove
     
 # Change locale
 ENV LANGUAGE=en_US.UTF-8
