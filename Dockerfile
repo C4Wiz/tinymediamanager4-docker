@@ -44,7 +44,8 @@ RUN \
 RUN \
     mkdir -p /tmp && \
     wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
-    dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
+    dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
+    apt-get -f install
 # Download LibMediaInfo   
 RUN \
     wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb && \
