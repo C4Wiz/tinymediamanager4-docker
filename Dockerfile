@@ -42,11 +42,11 @@ RUN \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
 # Download FFMPEG    
 RUN \
-    wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
+    wget ${FFMPEG_URL} -O /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb && \
     dpkg -i /tmp/FFMPEG_${FFMPEG_VERSION}_amd64.deb
 # Download LibMediaInfo   
 RUN \
-    wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
+    wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb && \
     dpkg -i tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}_amd64.deb
 # Cleanup
 RUN \
