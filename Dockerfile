@@ -60,7 +60,7 @@ mkdir -p /temp
 # Download/Install LibMediaInfo   
 RUN \
     wget ${LIBZEN0_URL} -O /temp/libzen0.deb && \
-    dpkg -i dpkg -i /temp/libzen0.deb
+    dpkg -i /temp/libzen0.deb
          
 # Download/Install MediaInfo 
 RUN \
