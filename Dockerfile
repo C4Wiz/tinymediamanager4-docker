@@ -56,18 +56,17 @@ RUN \
     
 # Download LibMediaInfo   
 RUN \
-    wget ${LIBZEN0_URL} -O /defaults/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb \
-         ${LIBMEDIAINFO_URL} -O /defaults/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb && \
-    dpkg -i /defaults/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb \
-            /defaults/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
+    mkdir -p /temp && /
+    wget ${LIBZEN0_URL} -O /temp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb \
+         ${LIBMEDIAINFO_URL} -O /temp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb \
+    chown -R $USER_ID:$GROUP_ID /temp/* 
+    dpkg -i /temp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb \
+            /temp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
     #wget ${LIBMEDIAINFO_URL} -O /defaults/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb && \
     #dpkg -i /defaults/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
 # Cleanup
 #RUN \
-    #cd /defaults && \
-    #rm -r tmm.tar.gz \
-          #libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb \
-          #libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb
+    #rm -r /temp
     
           
     
