@@ -54,18 +54,21 @@ RUN \
     mkdir -p /defaults && \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
     
-# Download LibMediaInfo   
 RUN \
-    mkdir -p /temp && \
-    wget ${LIBZEN0_URL} -O /temp/libzen0.deb \
-         ${LIBMEDIAINFO_URL} -O /temp/libmediainfo0.deb
-# Install MediaInfo 
+mkdir -p /temp 
+    
+# Download/Install LibMediaInfo   
 RUN \
-    dpkg -i /temp/libzen0.deb \
-           /temp/libmediainfo0.deb
+    wget ${LIBZEN0_URL} -O /temp/libzen0.deb && \
+    dpkg -i dpkg -i /temp/libzen0.deb
+         
+# Download/Install MediaInfo 
+RUN \
+    wget ${LIBMEDIAINFO_URL} -O /temp/libmediainfo0.deb && \
+    dpkg -i /temp/libmediainfo0.deb
 # Cleanup
-#RUN \
-    #rm -r /temp
+RUN \
+    rm -r /temp
     
           
     
