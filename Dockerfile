@@ -61,7 +61,7 @@ RUN \
          #${LIBMEDIAINFO_URL} -O /temp/libmediainfo0v5.deb
 # Install MediaInfo 
 RUN \
-    dpkg -i ~/temp/libzen0v5.deb
+    dpkg -i /tmp/temp/libzen0v5.deb
            # /temp/libmediainfo0v5.deb
 # Cleanup
 #RUN \
