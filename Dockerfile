@@ -56,9 +56,9 @@ RUN \
     
 # Download LibMediaInfo   
 RUN \
-    wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb && \
-    wget ${LIBZEN0_URL} -O /tmp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb && \
-    dpkg -i /tmp/ibzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
+    wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb ${LIBZEN0_URL} -O /tmp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb&& \
+    dpkg -i /tmp/ibzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb \
+            /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
 # Cleanup
 RUN \
     cd /tmp && \
