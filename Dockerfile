@@ -60,8 +60,8 @@ RUN \
     wget ${LIBZEN0_URL} -O /temp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb \
          ${LIBMEDIAINFO_URL} -O /temp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
 RUN \
-    dpkg -i /temp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb && \
-            /temp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
+    dpkg -i /temp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb
+           # /temp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
 # Cleanup
 #RUN \
     #rm -r /temp
