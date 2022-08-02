@@ -6,10 +6,12 @@ FROM jlesage/baseimage-gui:debian-11
 # Define software versions.
 ARG TMM_VERSION=4.3.1
 ARG LIBMEDIAINFO_VERSION=22.06
+ARG LIBZEN0_VERSION=0.4.39
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
 ARG LIBMEDIAINFO_URL=https://mediaarea.net/download/binary/libmediainfo0/${LIBMEDIAINFO_VERSION}/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
+ARG LIBZEN0_URL=https://mediaarea.net/download/binary/libzen0/${LIBZEN0_VERSION}/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
 # Define working directory.
 WORKDIR /tmp
@@ -37,7 +39,7 @@ RUN \
     #libswresample4 \
     #libmms0 \
     #libtinyxml2-9 \
-    libzen0v5 \
+    #libzen0v5 \
     wget 
     
 # Change locale
@@ -55,7 +57,8 @@ RUN \
 # Download LibMediaInfo   
 RUN \
     wget ${LIBMEDIAINFO_URL} -O /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb && \
-    dpkg -i /tmp/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
+    wget ${LIBZEN0_URL} -O /tmp/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb && \
+    dpkg -i /tmp/ibzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
 # Cleanup
 RUN \
     cd /tmp && \
