@@ -57,11 +57,11 @@ RUN \
 # Download LibMediaInfo   
 RUN \
     mkdir -p /temp && \
-    wget ${LIBZEN0_URL} -O /temp/libzen0.deb
+    wget ${LIBZEN0_URL} -O /temp/libzen0.deb \
     wget ${LIBMEDIAINFO_URL} -O /temp/libmediainfo0.deb
 # Install MediaInfo 
 RUN \
-    dpkg -i /temp/libzen0.deb
+    dpkg -i /temp/libzen0.deb \
     dpkg -i /temp/libmediainfo0.deb
 # Cleanup
 #RUN \
