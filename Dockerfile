@@ -27,7 +27,7 @@ RUN \
     fonts-dejavu \
     zenity \
     dpkg \
-    wget 
+    wget
     
 # Change locale
 ENV LANGUAGE=en_US.UTF-8
