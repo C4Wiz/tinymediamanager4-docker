@@ -4,7 +4,7 @@
 FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
-ARG TMM_VERSION=4.3.1
+ARG TMM_VERSION=4.3.2
 ARG LIBMEDIAINFO_VERSION=22.06
 ARG LIBZEN0_VERSION=0.4.39
 
@@ -23,23 +23,10 @@ RUN \
     apt update && \
     apt install -y  \
     apt-utils \
-    #ffmpeg \
     locales \
-    #libmediainfo0v5 \
     fonts-dejavu \
     zenity \
     dpkg \
-    #npm \
-    #libavcodec59 \
-    #libavdevice59 \
-    #libavfilter8 \
-    #libavformat59 \
-    #libavutil57 \
-    #libpostproc56 \
-    #libswresample4 \
-    #libmms0 \
-    #libtinyxml2-9 \
-    #libzen0v5 \
     wget 
     
 # Change locale
