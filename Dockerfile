@@ -4,8 +4,8 @@
 FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
-ARG TMM_VERSION=4.3.3
-ARG LIBMEDIAINFO_VERSION=22.06
+ARG TMM_VERSION=4.3.4
+ARG LIBMEDIAINFO_VERSION=22.09
 ARG LIBZEN0_VERSION=0.4.39
 
 # Define software download URLs.
