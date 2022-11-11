@@ -11,7 +11,7 @@ ARG LIBZEN0_VERSION=0.4.39
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
 #ARG LIBMEDIAINFO_URL=https://mediaarea.net/download/binary/libmediainfo0/${LIBMEDIAINFO_VERSION}/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
-ARG LIBMEDIAINFO_URL=https://deb.debian.org/debian/pool/main/libm/libmediainfo/libmediainfo0v5_${LIBMEDIAINFO_VERSION}+dfsg-2_amd64.deb
+ARG LIBMEDIAINFO_URL=http://ftp.debian.org/debian/pool/main/libm/libmediainfo/libmediainfo0v5_${LIBMEDIAINFO_VERSION}+dfsg-1_amd64.deb
 #ARG LIBZEN0_URL=https://mediaarea.net/download/binary/libzen0/${LIBZEN0_VERSION}/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb
 ARG LIBZEN0_URL=https://deb.debian.org/debian/pool/main/libz/libzen/libzen0v5_${LIBZEN0_VERSION}-1_amd64.deb
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
