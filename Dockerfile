@@ -1,5 +1,5 @@
 #
-# TinyMediaManager Dockerfile
+# TinyMediaManager 4 Dockerfile
 #
 FROM jlesage/baseimage-gui:debian-11
 
