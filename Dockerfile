@@ -5,8 +5,8 @@ FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
 ARG TMM_VERSION=4.3.7
-ARG LIBMEDIAINFO_VERSION=22.09
-ARG LIBZEN0_VERSION=0.4.39
+ARG LIBMEDIAINFO_VERSION=22.12
+ARG LIBZEN0_VERSION=0.4.40
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
