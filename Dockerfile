@@ -4,7 +4,7 @@
 FROM jlesage/baseimage-gui:debian-11
 
 # Define software versions.
-ARG TMM_VERSION=4.3.12
+ARG TMM_VERSION=4.3.13
 #ARG LIBMEDIAINFO_VERSION=22.12
 #ARG LIBZEN0_VERSION=0.4.40
 
