@@ -3,7 +3,7 @@
 A repository for creating a docker container including TinyMediaManager with GUI interface.
 This is a completely funcional Docker image with TinyMediaManager.
 
-Based on Debian 11. 
+Based on Alpine. 
 
 Tested and working on unRAID 6.10.0rc4, but should work on any x86_64 devices.
 
