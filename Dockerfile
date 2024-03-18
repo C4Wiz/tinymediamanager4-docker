@@ -1,64 +1,42 @@
 #
-# TinyMediaManager 4 Dockerfile
+# TinyMediaManager Dockerfile
 #
-FROM jlesage/baseimage-gui:debian-11
+FROM jlesage/baseimage-gui:alpine-3.12-glibc
 
 # Define software versions.
-ARG TMM_VERSION=4.3.14
-#ARG LIBMEDIAINFO_VERSION=22.12
-#ARG LIBZEN0_VERSION=0.4.40
+
+ARG TMM_VERSION=4.3.15
 
 # Define software download URLs.
 ARG TMM_URL=https://release.tinymediamanager.org/v4/dist/tmm_${TMM_VERSION}_linux-amd64.tar.gz
-#ARG LIBMEDIAINFO_URL=https://mediaarea.net/download/binary/libmediainfo0/${LIBMEDIAINFO_VERSION}/libmediainfo0v5_${LIBMEDIAINFO_VERSION}-1_amd64.Debian_11.deb
-#ARG LIBZEN0_URL=https://mediaarea.net/download/binary/libzen0/${LIBZEN0_VERSION}/libzen0v5_${LIBZEN0_VERSION}-1_amd64.Debian_11.deb
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jre/bin
+
 # Define working directory.
 WORKDIR /tmp
-
-# Add Repository for SID Packages
-# RUN echo 'deb http://deb.debian.org/debian sid main' >> /etc/apt/sources.list
-# Install dependencies.
-RUN \
-    apt update && \
-    apt install -y  \
-    apt-utils \
-    locales \
-    fonts-dejavu \
-    zenity \
-    dpkg \
-    wget
-    
-# Change locale
-ENV LANGUAGE=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
-ENV LANG=en_US.UTF-8
-RUN sed -i '/^#.* en_US.UTF-8 /s/^#//' /etc/locale.gen
-RUN locale-gen en_US.UTF-8
 
 # Download TinyMediaManager
 RUN \
     mkdir -p /defaults && \
     wget ${TMM_URL} -O /defaults/tmm.tar.gz
-    
-#RUN \
-#mkdir -p /temp 
-    
-# Download/Install LibMediaInfo   
-#RUN \
-    #wget ${LIBZEN0_URL} -O /temp/libzen0.deb && \
-    #dpkg -i /temp/libzen0.deb
-         
-# Download/Install MediaInfo 
-#RUN \
-    #wget ${LIBMEDIAINFO_URL} -O /temp/libmediainfo0.deb && \
-    #dpkg -i /temp/libmediainfo0.deb
-# Cleanup
-#RUN \
-    #rm -r /temp
-    
-          
-    
+
+# Install dependencies.
+RUN \
+    apk add --update \
+        libmediainfo \
+        ttf-dejavu \
+        bash \
+	    zenity \
+        tar \
+      	zstd
+
+
+# Fix Java Segmentation Fault
+RUN wget "https://www.archlinux.org/packages/core/x86_64/zlib/download" -O /tmp/libz.tar.xz \
+    && mkdir -p /tmp/libz \
+    && tar -xf /tmp/libz.tar.xz -C /tmp/libz \
+    && cp /tmp/libz/usr/lib/libz.so.1.3 /usr/glibc-compat/lib \
+    && /usr/glibc-compat/sbin/ldconfig \
+    && rm -rf /tmp/libz /tmp/libz.tar.xz
 
 # Maximize only the main/initial window.
 # It seems this is not needed for TMM 3.X version.
@@ -70,11 +48,6 @@ RUN \
 RUN \
     APP_ICON_URL=https://gitlab.com/tinyMediaManager/tinyMediaManager/raw/45f9c702615a55725a508523b0524166b188ff75/AppBundler/tmm.png && \
     install_app_icon.sh "$APP_ICON_URL"
-    
-# Cleanup
-RUN \
-    apt upgrade && \
-    apt autoremove -y
 
 # Add files.
 COPY rootfs/ /
