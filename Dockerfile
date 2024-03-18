@@ -32,12 +32,12 @@ RUN \
 
 
 # Fix Java Segmentation Fault
-RUN wget "https://www.archlinux.org/packages/core/x86_64/zlib/download" -O /tmp/libz.tar.zst \
-    && mkdir -p /tmp/libz \
-    && tar --zstd -xf /tmp/libz.tar.zst -C /tmp/libz \
-    && cp /tmp/libz/usr/lib/libz.so.1.3 /usr/glibc-compat/lib \
-    && /usr/glibc-compat/sbin/ldconfig \
-    && rm -rf /tmp/libz /tmp/libz.tar.zst
+# RUN wget "https://www.archlinux.org/packages/core/x86_64/zlib/download" -O /tmp/libz.tar.zst \
+   # && mkdir -p /tmp/libz \
+   # && tar --zstd -xf /tmp/libz.tar.zst -C /tmp/libz \
+   # && cp /tmp/libz/usr/lib/libz.so.1.3 /usr/glibc-compat/lib \
+   # && /usr/glibc-compat/sbin/ldconfig \
+   # && rm -rf /tmp/libz /tmp/libz.tar.zst
 
 # Maximize only the main/initial window.
 # It seems this is not needed for TMM 3.X version.
